@@ -1,31 +1,38 @@
 library(shiny)
 
-# Define UI for application that draws a histogram
+# Definir la parte UI del archivo
 ui <- fluidPage(
 
-    # Application title
+  # Se selecciona el título de la interfaz
     titlePanel("Hacks para datos agrupados"),
 
-    # Sidebar with a slider input for number of bins 
+  # Generacion de un conjunto de pestañas 
     tabsetPanel(
+        
+      # Primera pestaña
         tabPanel('El magi número',
+                 
+          # Se genera interfaz que contiene entrada y salida
             sidebarLayout(
-                sidebarPanel(
                 
+              # Parte de la entrada de interfaz
+                sidebarPanel(
+                    
+                           # Se especifica el tipo de entrada, su codigo interno y como aparece
                              numericInput(inputId = 'na',
                                           label = 'Tamaño de la muestra',
                                           value = 0),
                          
-                            textInput(inputId = 'opcion',
-                                      label = 'Escoja un cálculo',
-                                      value = 'Cuartil'),
+                             textInput(inputId = 'opcion',
+                                       label = 'Escoja un cálculo',
+                                       value = 'Cuartil'),
                             
-                            numericInput(inputId = 'numa',
-                                         label = 'Número auxiliar (num)',
-                                         value = 0)
+                             numericInput(inputId = 'numa',
+                                          label = 'Número auxiliar (num)',
+                                          value = 0)
                 
                             ),
-                
+              # Parte de la salida de la interfaz
                 mainPanel(textOutput('caption1'))
             
             
@@ -34,6 +41,7 @@ ui <- fluidPage(
             
             ),
         
+      # Segunda pestaña 
         tabPanel('Fórmulas varias',
             sidebarLayout(
                 sidebarPanel(width = 2/3,
@@ -87,6 +95,7 @@ ui <- fluidPage(
                 
             ),
         
+      # Tercera pestaña
         tabPanel('Ecuación de la moda',
            sidebarLayout(
                sidebarPanel(width = 0.45,
@@ -136,9 +145,9 @@ ui <- fluidPage(
 )
 
 
-# Define server logic required to draw a histogram
+# Se define la parter server que genera los procedimientos
 server <- function(input, output) {
-
+  # Se específica el procedimiento de la pestaña 2
     output$caption2 <- renderPrint({
         per_dec <- function(n, fi, Li, Ic, Fant, num, calculo = 'Percentil'){
             # Condiciones inciales para entregar un buen resultado
@@ -176,6 +185,7 @@ server <- function(input, output) {
         
     })
     
+  # Se específica el procedimiento de la pestaña 1
     output$caption1 <- renderPrint({
         
         magic_number <- function(n, calculo = 'Cuartil', num){
@@ -207,7 +217,8 @@ server <- function(input, output) {
         paste('Tu magic numero es:', resula)
         
     })
-    
+  
+  # Se específica el procedimiento de la pestaña 3
     output$caption3 <-  renderPrint({
         
         Moda <- function(Li, Ic, fi, fant, fdep){
@@ -224,5 +235,5 @@ server <- function(input, output) {
     
 }
 
-# Run the application 
-shinyApp(ui = ui, server = server)
+# Se ejecuta la aplicacion
+  shinyApp(ui = ui, server = server)

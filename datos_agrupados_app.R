@@ -146,7 +146,9 @@ ui <- fluidPage(
 
 
 # Se define la parter server que genera los procedimientos
-server <- function(input, output) {
+
+  server <- function(input, output) {
+  
   # Se específica el procedimiento de la pestaña 2
     output$caption2 <- renderPrint({
         per_dec <- function(n, fi, Li, Ic, Fant, num, calculo = 'Percentil'){

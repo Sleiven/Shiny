@@ -14,21 +14,15 @@ ui <- fluidPage(
                 
                              numericInput(inputId = 'na',
                                           label = 'Tamaño de la muestra',
-                                          value = 0
-                                      
-                             ),
+                                          value = 0),
                          
                             textInput(inputId = 'opcion',
-                                        label = 'Escoja un cálculo',
-                                        value = 'Cuartil'
-                                     
-                            ),
+                                      label = 'Escoja un cálculo',
+                                      value = 'Cuartil'),
                             
                             numericInput(inputId = 'numa',
                                          label = 'Número auxiliar (num)',
-                                         value = 0
-                                      
-                            )
+                                         value = 0)
                 
                             ),
                 
@@ -86,9 +80,7 @@ ui <- fluidPage(
                 ),
             
         
-            mainPanel(
-                      textOutput("caption2")
-                      )    
+            mainPanel(textOutput("caption2"))    
                 
             )
             
@@ -102,36 +94,27 @@ ui <- fluidPage(
                        column(3,
                               numericInput(inputId = 'Lic',
                                            label = 'Límite inferior',
-                                           value = 0
-                                           
-                              ),
+                                           value = 0),
                               
                               numericInput(inputId = 'Icc',
                                            label = 'Intervalo de clase',
-                                           value = 0
-                                           
-                              ),
+                                           value = 0),
                               
                               numericInput(inputId = 'fic',
                                            label = 'Freq absoluta',
-                                           value = 0
-                                           
-                              ) 
+                                           value = 0) 
+                              
                        ),
                        
                       column(4,
                              numericInput(inputId = 'fantc',
                                           label = 'Freq absoluta acumulada anterior',
-                                          value = 0
-                                          
-                                          
-                             ),
+                                          value = 0),
                              
                              numericInput(inputId = 'fdep',
                                           label = 'Freq absoluta acumulada posterior',
-                                          value = 0
-                          
-                             )
+                                          value = 0)
+                             
                       )
                    
                    

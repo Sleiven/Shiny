@@ -164,7 +164,7 @@ ui <- fluidPage(
                 if(num <= 0 | num >= 100) stop("los valores de 'num' admitidos para cálculo = 'Percentil' es entre 0 y 100")
             }
             if(calculo == 'Cuartil'){
-                if(num != 1 & num != 2 & num != 3) stop("Para Q1, Q2, Q3, los valores de 'num' admitidos son 1, 2, 3")
+                if(num != 1 & num != 2 & num != 3) stop("Para calculo = 'Cuartil' los 'num' admitidos son 1 (Q1), 2 (Q2) y 3 (Q3)")
             }
             
             c <- n * num
@@ -203,7 +203,7 @@ ui <- fluidPage(
                 if(num <= 0 | num >= 100) stop("los valores de 'num' admitidos para calculo = 'Percentil' es entre 0 y 100")
             }
             if(calculo == 'Cuartil'){
-                if(num != 1 & num != 2 & num != 3) stop("Para Q1, Q2, Q3, los valores de 'num' admitidos son 1, 2, 3")
+                if(num != 1 & num != 2 & num != 3) stop("Para calculo = 'Cuartil' los 'num' admitidos son 1 (Q1), 2 (Q2) y 3 (Q3)")
             }
             c <- n * num
             switch(calculo,
@@ -216,7 +216,7 @@ ui <- fluidPage(
         
         opci <- input$opcion
         resula <- magic_number(n = input$na, calculo = opci, num = input$numa)
-        paste('Tu magic numero es:', resula)
+        paste('Tu magi numero es:', resula)
         
     })
   

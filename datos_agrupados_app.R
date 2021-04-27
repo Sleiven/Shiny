@@ -15,7 +15,7 @@ ui <- fluidPage(
           # Se genera interfaz que contiene entrada y salida
             sidebarLayout(
                 
-              # Parte de la entrada de interfaz
+              # Parte de la entrada de interfaz 1
                 sidebarPanel(
                     
                            # Se especifica el tipo de entrada, su codigo interno y como aparece
@@ -32,7 +32,8 @@ ui <- fluidPage(
                                           value = 0)
                 
                             ),
-              # Parte de la salida de la interfaz
+              
+              # Parte de la salida de la interfaz 1
                 mainPanel(textOutput('caption1'))
             
             
@@ -44,11 +45,13 @@ ui <- fluidPage(
       # Segunda pestaña 
         tabPanel('Fórmulas varias',
             sidebarLayout(
-                sidebarPanel(width = 2/3,
+              
+              # Parte de la entrada de la interfaz 2
+                sidebarPanel(width = 2/3, # Para modificar el ancho de la interfaz
                     fluidRow(
                         column(2,
                                
-                               numericInput(inputId = 'Icb',
+                               numericInput(inputId = 'Icb', 
                                             label = 'Intervalo de clase', 
                                             value = 0),
                                
@@ -59,6 +62,7 @@ ui <- fluidPage(
                         ),
                         
                         column(3,
+                               
                                numericInput(inputId = 'fib',
                                             label = 'freq absoluta', 
                                             value = 0),
@@ -87,7 +91,7 @@ ui <- fluidPage(
                               value = 'Percentil')
                 ),
             
-        
+          # Parte de salida de la interfaz 2
             mainPanel(textOutput("caption2"))    
                 
             )
@@ -98,9 +102,12 @@ ui <- fluidPage(
       # Tercera pestaña
         tabPanel('Ecuación de la moda',
            sidebarLayout(
+             
+             # Parte de la entrada de la interfaz 3
                sidebarPanel(width = 0.45,
                    fluidPage(
                        column(3,
+                              
                               numericInput(inputId = 'Lic',
                                            label = 'Límite inferior',
                                            value = 0),
@@ -116,6 +123,7 @@ ui <- fluidPage(
                        ),
                        
                       column(4,
+                             
                              numericInput(inputId = 'fantc',
                                           label = 'Freq absoluta acumulada anterior',
                                           value = 0),
@@ -132,7 +140,8 @@ ui <- fluidPage(
                    )
                    
                ),
-               
+             
+             # Parte de salida de la interfaz 3
                mainPanel(textOutput('caption3'))
                
            ) 
@@ -151,8 +160,11 @@ ui <- fluidPage(
   
   # Se específica el procedimiento de la pestaña 2
     output$caption2 <- renderPrint({
+      
+      # Codigo de funcion de pestaña 2
         per_dec <- function(n, fi, Li, Ic, Fant, num, calculo = 'Percentil'){
-            # Condiciones inciales para entregar un buen resultado
+            
+          # Condiciones inciales para entregar un buen resultado
             if(calculo != 'Mediana' & calculo != 'Cuartil' & calculo != 'Decil' & calculo != 'Percentil') stop("calculo debe ser 'Mediana', o 'Cuartil', o 'Decil', o 'Percentil'")
             if(calculo == 'Mediana'){
                 if(num != 1) stop("El valor de 'num' admitido para cálculo = 'Mediana' es 1")
@@ -177,7 +189,8 @@ ui <- fluidPage(
             tot <- Li + ((co-Fant)/(fi)) * Ic
             round(tot, 2)
         }
-        
+      
+      # Ejecucion interna del comando
         res <- per_dec(n = input$nb, fi = input$fib, Li = input$Lib, Ic = input$Icb, 
                        Fant = input$Fantb, num = input$numb, calculo = input$opciones)
         
@@ -191,7 +204,6 @@ ui <- fluidPage(
     output$caption1 <- renderPrint({
         
         magic_number <- function(n, calculo = 'Cuartil', num){
-            
             if(calculo != 'Mediana' & calculo != 'Cuartil' & calculo != 'Decil' & calculo != 'Percentil') stop("calc debe ser 'Mediana', 'Cuartil', 'Decil', 'Percentil'")
             if(calculo == 'Mediana'){
                 if(num != 1) stop("El valor de 'num' admitido para calculo = 'Mediana' es 1")
@@ -205,12 +217,14 @@ ui <- fluidPage(
             if(calculo == 'Cuartil'){
                 if(num != 1 & num != 2 & num != 3) stop("Para calculo = 'Cuartil' los 'num' admitidos son 1 (Q1), 2 (Q2) y 3 (Q3)")
             }
+          
             c <- n * num
             switch(calculo,
                    'Decil' = co <- c/10,
                    'Percentil'=  co <- c/100,
                    'Cuartil' = co <- c/4,
                    'Mediana' = co <- c/2)
+          
             co
         }
         

@@ -170,10 +170,10 @@ ui <- fluidPage(
                 if(num != 1) stop("El valor de 'num' admitido para cálculo = 'Mediana' es 1")
             }  
             if(calculo == 'Decil'){
-                if(num <= 0 | num >= 10) stop("los valores de 'num' admitidos para cálculo = 'Decil' es entre 0 y 10")
+                if(num <= 0 | num >= 10) stop("los valores de 'num' admitidos para calculo = 'Decil' es entre 0 y 10")
             }
             if(calculo == 'Percentil'){
-                if(num <= 0 | num >= 100) stop("los valores de 'num' admitidos para cálculo = 'Percentil' es entre 0 y 100")
+                if(num <= 0 | num >= 100) stop("los valores de 'num' admitidos para calculo = 'Percentil' es entre 0 y 100")
             }
             if(calculo == 'Cuartil'){
                 if(num != 1 & num != 2 & num != 3) stop("Para calculo = 'Cuartil' los 'num' admitidos son 1 (Q1), 2 (Q2) y 3 (Q3)")
@@ -204,7 +204,7 @@ ui <- fluidPage(
     output$caption1 <- renderPrint({
         
         magic_number <- function(n, calculo = 'Cuartil', num){
-            if(calculo != 'Mediana' & calculo != 'Cuartil' & calculo != 'Decil' & calculo != 'Percentil') stop("calc debe ser 'Mediana', 'Cuartil', 'Decil', 'Percentil'")
+            if(calculo != 'Mediana' & calculo != 'Cuartil' & calculo != 'Decil' & calculo != 'Percentil') stop("calculo debe ser 'Mediana', o 'Cuartil', o 'Decil', o 'Percentil'")
             if(calculo == 'Mediana'){
                 if(num != 1) stop("El valor de 'num' admitido para calculo = 'Mediana' es 1")
             }  
